@@ -159,3 +159,129 @@ Utilities
 .cd-text-sm {
     font-size: 0.9375rem;
 }
+
+/* --------------------------------
+
+Component 
+
+-------------------------------- */
+
+.morph-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 1px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    transform-origin: left top;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.morph-bg--visible {
+    opacity: 1;
+}
+
+.morph-bg--has-transition {
+    transition: 0.3s;
+    will-change: transform, border-radius, height, width;
+}
+
+/* -------------------------------- 
+
+Demo style 
+
+-------------------------------- */
+
+.demo-morph-bg-paragraph {
+    font-size: 0.9375rem;
+    color: hsl(240, 4%, 65%);
+}
+
+.demo-morph-bg-list {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.demo-morph-bg-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: hsl(230, 13%, 9%);
+    text-decoration: none;
+    font-weight: medium;
+}
+
+.demo-morph-bg-target {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.demo-morph-bg-button {
+    border-radius: 50em;
+    font-weight: medium;
+    cursor: pointer;
+    color: hsl(230, 13%, 9%);
+    padding: 0.75rem 1rem;
+}
+
+.demo-morph-bg-1 {
+    background-color: hsl(250, 84%, 54%);
+}
+
+.demo-morph-bg-2 {
+    background-color: hsl(240, 4%, 90%);
+}
+
+/* -------------------------------- 
+
+Utilities 
+
+-------------------------------- */
+
+.cd-block {
+    display: block;
+}
+
+.cd-position-relative {
+    position: relative;
+}
+
+.cd-z-index-1 {
+    z-index: 1;
+}
+
+.cd-z-index-2 {
+    z-index: 2;
+}
+
+.cd-margin-bottom-sm {
+    margin-bottom: 1.5rem;
+}
+
+.cd-margin-bottom-xl {
+    margin-bottom: 4.5rem;
+}
+
+.cd-text-center {
+    text-align: center;
+}
+
+.split-btn-v2__btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75em;
+    color: hsl(230, 13%, 9%);
+    font-weight: medium;
+    cursor: pointer;
+}
+
+.gap-2xs {
+    gap: 0.25rem;
+}

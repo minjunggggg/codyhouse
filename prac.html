@@ -75,51 +75,691 @@
         </div>
     </section>
 
-    <div class="split-btn-v2 js-split-btn-v2">
-        <button class="split-btn-v2__btn gap-2xs js-split-btn-v2__btn" aria-controls="split-btn-v2-list"
-            aria-expanded="false" aria-haspopup="true">
-            <span>Download</span>
-            <svg class="split-btn-v2__btn-icon icon icon--2xs" viewBox="0 0 12 12">
-                <title>Show download options</title>
-                <g fill="currentColor">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" d="M11 4l-5 5-5-5"></path>
+    <section class="cd-text-center">
+        <div class="split-btn-v2 js-split-btn-v2">
+            <button class="split-btn-v2__btn gap-2xs js-split-btn-v2__btn" aria-controls="split-btn-v2-list"
+                aria-expanded="false" aria-haspopup="true">
+                <span>Download</span>
+                <svg class="split-btn-v2__btn-icon icon icon--2xs" viewBox="0 0 12 12">
+                    <title>Show download options</title>
+                    <g fill="currentColor">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M11 4l-5 5-5-5"></path>
+                    </g>
+                </svg>
+            </button>
+            <div class="split-btn-v2__list-wrapper js-split-btn-v2__list-wrapper" id="split-btn-v2-list">
+                <div class="split-btn-v2__list">
+                    <button class="split-btn-v2__list-item js-split-btn-v2__item" tabindex="0">
+                        <svg class="icon icon--xs" viewBox="0 0 16 16" aria-hidden="true">
+                            <g class="split-btn-v2__anim-path">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M8 2v5"></path>
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M5 7l3 3 3-3H5z" fill="currentColor"></path>
+                            </g>
+                            <path d="M14 10v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-3" fill="none" opacity=".4"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            </path>
+                        </svg>
+                        <span>Mac Intel (Universal)</span>
+                    </button>
+                    <button class="split-btn-v2__list-item js-split-btn-v2__item" tabindex="0">
+                        <svg class="icon icon--xs" viewBox="0 0 16 16" aria-hidden="true">
+                            <g class="split-btn-v2__anim-path">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M8 2v5"></path>
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M5 7l3 3 3-3H5z" fill="currentColor"></path>
+                            </g>
+                            <path d="M14 10v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-3" fill="none" opacity=".4"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            </path>
+                        </svg>
+                        <span>Apple Silicon</span>
+                    </button>
+                </div>
+            </div>
+            <span class="split-btn-v2__morph-bg js-split-btn-v2__morph-bg" aria-hidden="true" style=""></span>
+        </div>
+    </section>
+
+    <div class="container flex flex-center min-height-100vh padding-md js-cd-demo">
+        <!-- Component HTML -->
+        <ul class="flex flex-wrap flex-center gap-sm">
+            <li><button class="parallax-btn text-md js-parallax-btn"><span
+                        class="parallax-btn__content">Spaceship</span>
+                    <div class="parallax-btn__bg js-parallax-btn__bg" aria-hidden="true">
+                        <div class="parallax-btn__bg-front"></div>
+                        <div class="parallax-btn__bg-back"><img class="parallax-btn__bg-img js-parallax-btn__bg-img"
+                                src="https://d3ae4wrz2ljkbq.cloudfront.net/components/parallax-button-img-1.jpg"
+                                alt="Stars" style=""></div>
+                    </div>
+                </button></li>
+            <li><button class="parallax-btn text-md js-parallax-btn"><span class="parallax-btn__content">Sparkles</span>
+                    <div class="parallax-btn__bg js-parallax-btn__bg" aria-hidden="true">
+                        <div class="parallax-btn__bg-front"></div>
+                        <div class="parallax-btn__bg-back"><img class="parallax-btn__bg-img js-parallax-btn__bg-img"
+                                src="https://d3ae4wrz2ljkbq.cloudfront.net/components/parallax-button-img-2.jpg"
+                                alt="Sparkles" style=""></div>
+                    </div>
+                </button></li>
+            <li><button class="parallax-btn text-md js-parallax-btn"><span
+                        class="parallax-btn__content">Gradients</span>
+                    <div class="parallax-btn__bg js-parallax-btn__bg" aria-hidden="true">
+                        <div class="parallax-btn__bg-front"></div>
+                        <div class="parallax-btn__bg-back"><img class="parallax-btn__bg-img js-parallax-btn__bg-img"
+                                src="https://d3ae4wrz2ljkbq.cloudfront.net/components/parallax-button-img-3.jpg"
+                                alt="Gradient"></div>
+                    </div>
+                </button></li>
+        </ul><!-- End Component HTML -->
+    </div>
+
+    <p class="ta1-color-contrast-medium ta1-margin-bottom-sm">👇 Click multiple times to show multiple notifications.
+    </p>
+
+    <button class="ta1-btn ta1-btn--primary" aria-controls="toast-1">Show Toast</button>
+
+    <div class="toast toast--hidden toast--top-right js-toast" role="alert" aria-live="assertive" aria-atomic="true"
+        id="toast-1">
+        <div class="ta1-flex ta1-items-start ta1-justify-between">
+            <div class="ta1-text-component ta1-text-sm">
+                <h1 class="toast__title ta1-text-md">Title One</h1>
+                <p class="toast__p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus iusto ut,
+                    error aspernatur quaerat corrupti ipsum deleniti ratione.</p>
+            </div>
+
+            <button class="toast__close-btn ta1-margin-left-4xs js-toast__close-btn js-tab-focus">
+                <svg class="ta1-icon" viewBox="0 0 12 12">
+                    <title>Close notification</title>
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2">
+                        <line x1="1" y1="1" x2="11" y2="11" />
+                        <line x1="11" y1="1" x2="1" y2="11" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="toast toast--hidden toast--top-right js-toast" role="alert" aria-live="assertive" aria-atomic="true"
+        id="toast-2">
+        <div class="ta1-flex ta1-items-start ta1-justify-between">
+            <div class="toast__icon-wrapper toast__icon-wrapper--warning ta1-margin-right-xs">
+                <svg class="ta1-icon" viewBox="0 0 16 16">
+                    <title>Alert</title>
+                    <path
+                        d="M15.8,12.526,9.483.88A1.668,1.668,0,0,0,8.8.2,1.693,1.693,0,0,0,6.516.88L.2,12.526A1.678,1.678,0,0,0,1.686,15H14.314a1.7,1.7,0,0,0,.8-.2,1.673,1.673,0,0,0,.687-2.274ZM8,13a1,1,0,1,1,1-1A1,1,0,0,1,8,13ZM9,9.5a.5.5,0,0,1-.5.5h-1A.5.5,0,0,1,7,9.5v-4A.5.5,0,0,1,7.5,5h1a.5.5,0,0,1,.5.5Z">
+                    </path>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="ta1-text-component ta1-text-sm">
+                <h1 class="toast__title ta1-text-md">Title Two</h1>
+                <p class="toast__p">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+
+            <button class="toast__close-btn ta1-margin-left-4xs js-toast__close-btn js-tab-focus">
+                <svg class="ta1-icon" viewBox="0 0 12 12">
+                    <title>Close notification</title>
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2">
+                        <line x1="1" y1="1" x2="11" y2="11" />
+                        <line x1="11" y1="1" x2="1" y2="11" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="toast toast--hidden toast--top-right js-toast" role="alert" aria-live="assertive" aria-atomic="true"
+        id="toast-3">
+        <header
+            class="ta1-flex ta1-items-center ta1-justify-between ta1-border-bottom ta1-border-bg ta1-border-opacity-20% ta1-padding-bottom-xs ta1-margin-bottom-xs">
+            <h1 class="toast__title ta1-text-base ta1-text-truncate">Title Three</h1>
+
+            <button class="toast__close-btn ta1-margin-left-4xs js-toast__close-btn js-tab-focus">
+                <svg class="ta1-icon" viewBox="0 0 12 12">
+                    <title>Close notification</title>
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2">
+                        <line x1="1" y1="1" x2="11" y2="11" />
+                        <line x1="11" y1="1" x2="1" y2="11" />
+                    </g>
+                </svg>
+            </button>
+        </header>
+
+        <p class="toast__p ta1-text-sm ta1-line-height-md">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+
+    <div class="toast toast--hidden toast--top-right js-toast" role="alert" aria-live="assertive" aria-atomic="true"
+        id="toast-4">
+        <div class="ta1-flex ta1-items-start ta1-justify-between">
+            <div>
+                <div class="ta1-text-component ta1-text-sm">
+                    <h1 class="toast__title ta1-text-md">Title Four</h1>
+                    <p class="toast__p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, delectus.
+                    </p>
+                </div>
+
+                <a class="ta1-btn ta1-btn--primary ta1-btn--sm ta1-width-100% ta1-margin-top-xs" href="#0">Button</a>
+            </div>
+
+            <button class="toast__close-btn ta1-margin-left-4xs js-toast__close-btn js-tab-focus">
+                <svg class="ta1-icon" viewBox="0 0 12 12">
+                    <title>Close notification</title>
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2">
+                        <line x1="1" y1="1" x2="11" y2="11" />
+                        <line x1="11" y1="1" x2="1" y2="11" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="toast toast--hidden toast--top-right js-toast" role="alert" aria-live="assertive" aria-atomic="true"
+        id="toast-5">
+        <div class="ta1-flex ta1-items-start ta1-justify-between">
+            <div class="toast__icon-wrapper toast__icon-wrapper--success ta1-margin-right-xs">
+                <svg class="ta1-icon" viewBox="0 0 16 16">
+                    <title>Success</title>
+                    <g>
+                        <path
+                            d="M6,15a1,1,0,0,1-.707-.293l-5-5A1,1,0,1,1,1.707,8.293L5.86,12.445,14.178.431a1,1,0,1,1,1.644,1.138l-9,13A1,1,0,0,1,6.09,15C6.06,15,6.03,15,6,15Z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="ta1-text-component ta1-text-sm">
+                <h1 class="toast__title ta1-text-md">Title Five</h1>
+                <p class="toast__p">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo esse maiores
+                    assumenda.</p>
+            </div>
+
+            <button class="toast__close-btn ta1-margin-left-4xs js-toast__close-btn js-tab-focus">
+                <svg class="ta1-icon" viewBox="0 0 12 12">
+                    <title>Close notification</title>
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2">
+                        <line x1="1" y1="1" x2="11" y2="11" />
+                        <line x1="11" y1="1" x2="1" y2="11" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <ul class="cd-demo-chip-list">
+        <li>
+            <span class="chip">
+                <i class="chip__label">Chip</i>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip chip--outline">
+                <i class="chip__label">Outline</i>
+            </span>
+        </li>
+    </ul>
+
+    <ul class="cd-demo-chip-list">
+        <li>
+            <span class="chip chip--success">
+                <em class="chip__icon-wrapper">
+                    <svg class="cd-icon" viewBox="0 0 12 12" aria-hidden="true">
+                        <polyline points="1.5 6 4.5 9 10.5 3" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </em>
+
+                <i class="chip__label">Success</i>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip chip--error">
+                <em class="chip__icon-wrapper">
+                    <svg class="cd-icon" viewBox="0 0 12 12" aria-hidden="true">
+                        <line x1="6" y1="1.75" x2="6" y2="7" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.5" />
+                        <circle cx="6" cy="10" r="1" fill="currentColor" />
+                    </svg>
+                </em>
+
+                <i class="chip__label">Error</i>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip chip--warning">
+                <em class="chip__icon-wrapper">
+                    <svg class="cd-icon" viewBox="0 0 12 12" aria-hidden="true">
+                        <line x1="6" y1="1.75" x2="6" y2="7" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.5" />
+                        <circle cx="6" cy="10" r="1" fill="currentColor" />
+                    </svg>
+                </em>
+
+                <i class="chip__label">Warning</i>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip">
+                <em class="chip__icon-wrapper">
+                    <svg class="cd-icon" viewBox="0 0 12 12" aria-hidden="true">
+                        <line x1="3.25" y1="1.75" x2="3.25" y2="10.25" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                        <rect x="5" y="2" width="5" height="4" rx="0.5" fill="currentColor" />
+                    </svg>
+                </em>
+
+                <i class="chip__label">Icon</i>
+            </span>
+        </li>
+    </ul>
+
+    <div class="cd-demo-chip-list">
+        <button class="chip chip--interactive">
+            <i class="chip__label">Interactive</i>
+        </button>
+    </div>
+
+    <ul class="cd-demo-chip-list">
+        <li>
+            <span class="chip">
+                <img class="chip__img" src="https://codyhouse.co/app/assets/img/chips-img-1.jpg"
+                    alt="Picture of Olivia Saturday">
+                <i class="chip__label">Olivia Saturday</i>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip">
+                <img class="chip__img" src="https://codyhouse.co/app/assets/img/chips-img-2.jpg"
+                    alt="Picture of David Smith">
+                <i class="chip__label">David Smith</i>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip">
+                <img class="chip__img" src="https://codyhouse.co/app/assets/img/chips-img-3.jpg"
+                    alt="Picture of Marta Rossi">
+                <i class="chip__label">Marta Rossi</i>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip">
+                <img class="chip__img" src="https://codyhouse.co/app/assets/img/chips-img-4.jpg"
+                    alt="Picture of Paul Brown">
+                <i class="chip__label">Paul Brown</i>
+            </span>
+        </li>
+    </ul>
+
+    <ul class="cd-demo-chip-list">
+        <li>
+            <span class="chip">
+                <i class="chip__label">Removable Filter</i>
+
+                <button class="chip__btn">
+                    <svg class="cd-icon" viewBox="0 0 12 12">
+                        <title>Delete attribute</title>
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.5">
+                            <line x1="3" y1="3" x2="9" y2="9" />
+                            <line x1="9" y1="3" x2="3" y2="9" />
+                        </g>
+                    </svg>
+                </button>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip">
+                <img class="chip__img" src="https://codyhouse.co/app/assets/img/chips-img-1.jpg"
+                    alt="Picture of Olivia Saturday">
+
+                <i class="chip__label">Removable Filter</i>
+
+                <button class="chip__btn">
+                    <svg class="cd-icon" viewBox="0 0 12 12">
+                        <title>Delete attribute</title>
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.5">
+                            <line x1="3" y1="3" x2="9" y2="9" />
+                            <line x1="9" y1="3" x2="3" y2="9" />
+                        </g>
+                    </svg>
+                </button>
+            </span>
+        </li>
+
+        <li>
+            <span class="chip chip--outline">
+                <em class="chip__icon-wrapper">
+                    <svg class="cd-icon" viewBox="0 0 12 12" aria-hidden="true">
+                        <line x1="3.25" y1="1.75" x2="3.25" y2="10.25" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                        <rect x="5" y="2" width="5" height="4" rx="0.5" fill="currentColor" />
+                    </svg>
+                </em>
+
+                <i class="chip__label">Removable Filter</i>
+
+                <button class="chip__btn">
+                    <svg class="cd-icon" viewBox="0 0 12 12">
+                        <title>Delete attribute</title>
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.5">
+                            <line x1="3" y1="3" x2="9" y2="9" />
+                            <line x1="9" y1="3" x2="3" y2="9" />
+                        </g>
+                    </svg>
+                </button>
+            </span>
+        </li>
+    </ul>
+    <button class="cj1-btn cj1-btn--primary" aria-controls="collapse-content">Toggle Content Visibility</button>
+
+    <div id="collapse-content" class="cj1-hide js-collapse" data-collapse-animate="on">
+        <div class="cj1-margin-top-xs cj1-padding-md cj1-bg-dark cj1-radius-md">
+            <div class="cj1-text-component">
+                <h1 class="cj1-text-lg">Collapsible Content</h1>
+                <p class="cj1-opacity-60%">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nam illum cum
+                    sequi totam neque excepturi enim repellendus inventore rerum quod iusto eligendi, itaque autem
+                    nostrum reiciendis assumenda dolore commodi fuga quisquam veniam aperiam. Perspiciatis tenetur
+                    necessitatibus qui consequuntur molestiae, aliquid illum, nam quod deserunt animi commodi.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-card js-alert-card">
+        <div>
+            <h1 class="alert-card__title">
+                <svg class="cd-icon" viewBox="0 0 30 30" aria-hidden="true">
+                    <g>
+                        <path
+                            d="M12.4 2.563L.377 24.518A3.023 3.023 0 0 0 3.006 29h23.987a3.023 3.023 0 0 0 2.632-4.477L17.66 2.569a2.992 2.992 0 0 0-5.26-.006z"
+                            fill="#ffd138" opacity=".25"></path>
+                        <path fill="none" stroke="#efb525" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M15 19v-9"></path>
+                        <circle cx="15" cy="23.5" r="1.5" fill="#efb525"></circle>
+                    </g>
+                </svg>
+
+                <span>This is an important message</span>
+            </h1>
+
+            <p class="alert-card__content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+                accusantium maxime voluptatem praesentium neque consectetur delectus debitis quibusdam quisquam at?</p>
+
+
+            <div class="alert-card__btns">
+                <a class="cd-btn cd-btn--subtle" href="#0">Learn more</a>
+                <a class="cd-btn cd-btn--primary" href="#0">Start free trial</a>
+            </div>
+        </div>
+
+        <button class="alert-card__close-btn js-alert-card__close-btn">
+            <svg class="cd-icon" viewBox="0 0 16 16">
+                <title>Hide alert</title>
+                <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="2" y1="2" x2="14" y2="14" />
+                    <line x1="14" y1="2" x2="2" y2="14" />
                 </g>
             </svg>
         </button>
-        <div class="split-btn-v2__list-wrapper js-split-btn-v2__list-wrapper" id="split-btn-v2-list">
-            <div class="split-btn-v2__list">
-                <button class="split-btn-v2__list-item js-split-btn-v2__item" tabindex="0">
-                    <svg class="icon icon--xs" viewBox="0 0 16 16" aria-hidden="true">
-                        <g class="split-btn-v2__anim-path">
-                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M8 2v5"></path>
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 7l3 3 3-3H5z" fill="currentColor"></path>
+    </div>
+
+    <a class="link-card lm0-flex lm0-flex-column lm0-bg-light lm0-radius-md" href="#0" aria-label="Link label">
+        <div class="lm0-padding-md">
+            <div class="lm0-flex lm0-flex-wrap lm0-gap-xs lm0-items-center">
+                <figure>
+                    <svg class="lm0-block lm0-color-primary" width="72" height="72" viewBox="0 0 72 72">
+                        <circle fill="currentColor" opacity="0.15" cx="36" cy="36" r="36" />
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2">
+                            <path
+                                d="M45,49h6V43.562a2,2,0,0,0-1.515-1.941l-5.833-1.458a1,1,0,0,1-.747-.829l-.412-2.881A6,6,0,0,0,46,31V28.252A6.167,6.167,0,0,0,40.185,22,5.973,5.973,0,0,0,37,22.8" />
+                            <path
+                                d="M39.549,43.586l-4.925-1.408a1,1,0,0,1-.716-.82l-.415-2.9S37.219,38.734,39,37a10.227,10.227,0,0,1-2-6.738,6.185,6.185,0,0,0-5.761-6.257,6,6,0,0,0-6.234,5.756c0,.08,0,.159,0,.239a10.45,10.45,0,0,1-2,7c1.781,1.734,5.507,1.453,5.507,1.453l-.415,2.9a1,1,0,0,1-.716.82l-4.925,1.408A2,2,0,0,0,21,45.509V49H41V45.509A2,2,0,0,0,39.549,43.586Z" />
                         </g>
-                        <path d="M14 10v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-3" fill="none" opacity=".4"
-                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                        </path>
                     </svg>
-                    <span>Mac Intel (Universal)</span>
-                </button>
-                <button class="split-btn-v2__list-item js-split-btn-v2__item" tabindex="0">
-                    <svg class="icon icon--xs" viewBox="0 0 16 16" aria-hidden="true">
-                        <g class="split-btn-v2__anim-path">
-                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M8 2v5"></path>
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 7l3 3 3-3H5z" fill="currentColor"></path>
-                        </g>
-                        <path d="M14 10v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-3" fill="none" opacity=".4"
-                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                        </path>
-                    </svg>
-                    <span>Apple Silicon</span>
-                </button>
+                </figure>
+
+                <div class="lm0-line-height-xs">
+                    <p class="lm0-text-lg lm0-font-semibold lm0-color-contrast-higher">1,354</p>
+                    <p class="lm0-color-contrast-low lm0-margin-top-3xs">Users</p>
+                </div>
             </div>
         </div>
-        <span class="split-btn-v2__morph-bg js-split-btn-v2__morph-bg" aria-hidden="true" style=""></span>
+
+        <div class="link-card__footer lm0-margin-top-auto lm0-border-top lm0-border-contrast-lower">
+            <p class="lm0-text-sm">View</p>
+
+            <div>
+                <svg class="lm0-icon lm0-icon--sm" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <polyline points="15 6 21 12 15 18" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </a>
+
+    <ul class="pn-links pz5-grid">
+        <li class="pn-links__item pz5-col-6@md">
+            <a class="pn-links__link pz5-justify-center pz5-justify-between@md" href="#0">
+                <svg class="pn-links__icon pz5-icon pz5-icon--lg pz5-flip-x" viewBox="0 0 48 48">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="37" y1="14" x2="47" y2="24" />
+                        <line x1="47" y1="24" x2="37" y2="34" />
+                        <line x1="47" y1="24" x2="1.5" y2="24" />
+                    </g>
+                </svg>
+
+                <span class="pz5-margin-left-sm">
+                    <i class="pz5-sr-only">Previous article: </i>It was going to be a lonely trip back
+                </span>
+            </a>
+        </li>
+
+        <li class="pn-links__item pz5-col-6@md">
+            <a class="pn-links__link pz5-justify-center pz5-justify-between@md" href="#0">
+                <span class="pz5-margin-right-sm">
+                    <i class="pz5-sr-only">Next article: </i>The spectacle before us was sublime
+                </span>
+
+                <svg class="pn-links__icon pz5-icon pz5-icon--lg" viewBox="0 0 48 48">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="37" y1="14" x2="47" y2="24" />
+                        <line x1="47" y1="24" x2="37" y2="34" />
+                        <line x1="47" y1="24" x2="1.5" y2="24" />
+                    </g>
+                </svg>
+            </a>
+        </li>
+    </ul>
+
+    <fieldset class="color-swatches  js-color-swatches">
+        <legend class="color-swatches__legend cc9-text-sm cc9-color-contrast-medium cc9-margin-bottom-xs"
+            aria-live="polite" aria-atomic="true">Color: <span
+                class="color-swatches__color cc9-color-contrast-high js-color-swatches__color">Jet</span></legend>
+
+        <select class="js-color-swatches__select" aria-label="Select a color">
+            <option value="Jet" data-style="background-color: #34252F;">Jet</option>
+            <option value="Arsenic" data-style="background-color: #3B5249;">Arsenic</option>
+            <option value="Wintergreen" data-style="background-color: #519872;">Wintergreen</option>
+            <option value="Laurel Green" data-style="background-color: #A4B494;">Laurel Green</option>
+
+        </select>
+    </fieldset>
+
+    <ul class="stack-cards js-stack-cards">
+        <li class="stack-cards__item sg0-bg-light sg0-radius-lg sg0-inner-glow sg0-shadow-md js-stack-cards__item">
+            <div class="sg0-flex sg0-flex-center">Card One</div>
+        </li>
+
+        <li class="stack-cards__item sg0-bg-light sg0-radius-lg sg0-inner-glow sg0-shadow-md js-stack-cards__item">
+            <div class="sg0-flex sg0-flex-center">Card Two</div>
+        </li>
+
+        <li class="stack-cards__item sg0-bg-light sg0-radius-lg sg0-inner-glow sg0-shadow-md js-stack-cards__item">
+            <div class="sg0-flex sg0-flex-center">Card Three</div>
+        </li>
+    </ul>
+
+    <div class="sm6-bg sm6-border-right" style="width: 250px; height: 100vh;">
+        <nav class="sidenav sm6-padding-y-sm js-sidenav">
+            <div class="sidenav__label sm6-margin-bottom-3xs">
+                <span class="sm6-text-sm sm6-color-contrast-medium sm6-text-xs@md">Main</span>
+            </div>
+
+            <ul class="sidenav__list">
+                <li class="sidenav__item">
+                    <a href="#0" class="sidenav__link">
+                        <svg class="sm6-icon sidenav__icon" aria-hidden="true" viewBox="0 0 16 16">
+                            <g>
+                                <path
+                                    d="M6,0H1C0.4,0,0,0.4,0,1v5c0,0.6,0.4,1,1,1h5c0.6,0,1-0.4,1-1V1C7,0.4,6.6,0,6,0z M5,5H2V2h3V5z">
+                                </path>
+                                <path
+                                    d="M15,0h-5C9.4,0,9,0.4,9,1v5c0,0.6,0.4,1,1,1h5c0.6,0,1-0.4,1-1V1C16,0.4,15.6,0,15,0z M14,5h-3V2h3V5z">
+                                </path>
+                                <path
+                                    d="M6,9H1c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1h5c0.6,0,1-0.4,1-1v-5C7,9.4,6.6,9,6,9z M5,14H2v-3h3V14z">
+                                </path>
+                                <path
+                                    d="M15,9h-5c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1h5c0.6,0,1-0.4,1-1v-5C16,9.4,15.6,9,15,9z M14,14h-3v-3h3V14z">
+                                </path>
+                            </g>
+                        </svg>
+                        <span class="sidenav__text sm6-text-sm@md">Dashboard</span>
+
+                        <span class="sidenav__counter">12 <i class="sm6-sr-only">notifications</i></span>
+                    </a>
+
+                    <button class="sidenav__sublist-control js-sidenav__sublist-control js-tab-focus"
+                        aria-label="Toggle sub navigation">
+                        <svg class="sm6-icon" viewBox="0 0 12 12">
+                            <polygon points="4 3 8 6 4 9 4 3" />
+                        </svg>
+                    </button>
+
+                    <ul class="sidenav__list">
+                        <li class="sidenav__item">
+                            <a href="#0" class="sidenav__link">
+                                <span class="sidenav__text sm6-text-sm@md">New widget</span>
+                            </a>
+                        </li>
+
+                        <li class="sidenav__item">
+                            <a href="#0" class="sidenav__link">
+                                <span class="sidenav__text sm6-text-sm@md">Analytics</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="sidenav__item sidenav__item--expanded">
+                    <a href="#0" class="sidenav__link" aria-current="page">
+                        <svg class="sm6-icon sidenav__icon" aria-hidden="true" viewBox="0 0 16 16">
+                            <g>
+                                <path d="M14,7H2v7c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V7z"></path>
+                                <rect y="1" width="16" height="4"></rect>
+                            </g>
+                        </svg>
+                        <span class="sidenav__text sm6-text-sm@md">Products</span>
+                    </a>
+
+                    <button class="sidenav__sublist-control js-sidenav__sublist-control js-tab-focus"
+                        aria-label="Toggle sub navigation">
+                        <svg class="sm6-icon" viewBox="0 0 12 12">
+                            <polygon points="4 3 8 6 4 9 4 3" />
+                        </svg>
+                    </button>
+
+                    <ul class="sidenav__list">
+                        <li class="sidenav__item">
+                            <a href="#0" class="sidenav__link">
+                                <span class="sidenav__text sm6-text-sm@md">Add new</span>
+                            </a>
+                        </li>
+
+                        <li class="sidenav__item">
+                            <a href="#0" class="sidenav__link">
+                                <span class="sidenav__text sm6-text-sm@md">Categories</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidenav__item">
+                    <a href="#0" class="sidenav__link">
+                        <svg class="sm6-icon sidenav__icon" aria-hidden="true" viewBox="0 0 16 16">
+                            <g>
+                                <path
+                                    d="M14,6.883V13H2V6.82L0,5.695V14c0,0.553,0.448,1,1,1h14c0.552,0,1-0.447,1-1V5.783L14,6.883z">
+                                </path>
+                                <path d="M15,1H1C0.4,1,0,1.4,0,2v1.4l8,4.5l8-4.4V2C16,1.4,15.6,1,15,1z"></path>
+                            </g>
+                        </svg>
+                        <span class="sidenav__text sm6-text-sm@md">Messages</span>
+
+                        <span class="sidenav__counter">18 <i class="sm6-sr-only">notifications</i></span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidenav__divider sm6-margin-y-xs" role="presentation"></div>
+
+            <div class="sidenav__label sm6-margin-bottom-3xs">
+                <span class="sm6-text-sm sm6-color-contrast-medium sm6-text-xs@md">Other</span>
+            </div>
+
+            <ul class="sidenav__list">
+                <li class="sidenav__item">
+                    <a href="#0" class="sidenav__link">
+                        <svg class="sm6-icon sidenav__icon" aria-hidden="true" viewBox="0 0 16 16">
+                            <g>
+                                <circle cx="6" cy="8" r="2"></circle>
+                                <path
+                                    d="M10,2H6C2.7,2,0,4.7,0,8s2.7,6,6,6h4c3.3,0,6-2.7,6-6S13.3,2,10,2z M10,12H6c-2.2,0-4-1.8-4-4s1.8-4,4-4h4 c2.2,0,4,1.8,4,4S12.2,12,10,12z">
+                                </path>
+                            </g>
+                        </svg>
+                        <span class="sidenav__text sm6-text-sm@md">Settings</span>
+                    </a>
+                </li>
+
+                <li class="sidenav__item">
+                    <a href="#0" class="sidenav__link">
+                        <svg class="sm6-icon sidenav__icon" aria-hidden="true" viewBox="0 0 16 16">
+                            <g>
+                                <path
+                                    d="M12.25,8.231C11.163,9.323,9.659,10,8,10S4.837,9.323,3.75,8.231C1.5,9.646,0,12.145,0,15v1h16 v-1C16,12.145,14.5,9.646,12.25,8.231z">
+                                </path>
+                                <circle cx="8" cy="4" r="4"></circle>
+                            </g>
+                        </svg>
+                        <span class="sidenav__text sm6-text-sm@md">Account</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </body>
 

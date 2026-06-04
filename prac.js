@@ -1026,3 +1026,327 @@ Util.toggleClass = function (el, className, bool) {
         }
     }
 }());
+
+// File#: _1_dialog
+// Usage: codyhouse.co/license
+(function () {
+    var Dialog = function (element) {
+        this.element = element;
+        this.triggers = document.querySelectorAll('[aria-controls="' + this.element.getAttribute('id') + '"]');
+        this.firstFocusable = null;
+        this.lastFocusable = null;
+        this.selectedTrigger = null;
+        this.showClass = "dialog--is-visible";
+        this.binding = false;
+        initDialog(this);
+    };
+
+    function initDialog(dialog) {
+        if (dialog.triggers) {
+            for (var i = 0; i < dialog.triggers.length; i++) {
+                dialog.triggers[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+                    dialog.selectedTrigger = event.target;
+                    showDialog(dialog);
+                    initDialogEvents(dialog);
+                });
+            }
+        }
+
+        // listen to the openDialog event -> open dialog without a trigger button
+        dialog.element.addEventListener('openDialog', function (event) {
+            if (event.detail) self.selectedTrigger = event.detail;
+            showDialog(dialog);
+            initDialogEvents(dialog);
+        });
+
+        // listen to the closeDialog event -> close dialog without a trigger button
+        dialog.element.addEventListener('closeDialog', function (event) {
+            if (event.detail) self.selectedTrigger = event.detail;
+            closeDialog(dialog);
+        });
+    };
+
+    function showDialog(dialog) {
+        dialog.element.classList.add(dialog.showClass);
+        getFocusableElements(dialog);
+        dialog.firstFocusable.focus();
+        // wait for the end of transitions before moving focus
+        dialog.element.addEventListener("transitionend", function cb(event) {
+            dialog.firstFocusable.focus();
+            dialog.element.removeEventListener("transitionend", cb);
+        });
+        emitDialogEvents(dialog, 'dialogIsOpen');
+    };
+
+    function closeDialog(dialog) {
+        dialog.element.classList.remove(dialog.showClass);
+        dialog.firstFocusable = null;
+        dialog.lastFocusable = null;
+        if (dialog.selectedTrigger) dialog.selectedTrigger.focus();
+        //remove listeners
+        cancelDialogEvents(dialog);
+        emitDialogEvents(dialog, 'dialogIsClose');
+    };
+
+    function initDialogEvents(dialog) {
+        //add event listeners
+        dialog.binding = handleEvent.bind(dialog);
+        dialog.element.addEventListener('keydown', dialog.binding);
+        dialog.element.addEventListener('click', dialog.binding);
+    };
+
+    function cancelDialogEvents(dialog) {
+        //remove event listeners
+        dialog.element.removeEventListener('keydown', dialog.binding);
+        dialog.element.removeEventListener('click', dialog.binding);
+    };
+
+    function handleEvent(event) {
+        // handle events
+        switch (event.type) {
+            case 'click': {
+                initClick(this, event);
+            }
+            case 'keydown': {
+                initKeyDown(this, event);
+            }
+        }
+    };
+
+    function initKeyDown(dialog, event) {
+        if (event.keyCode && event.keyCode == 27 || event.key && event.key == 'Escape') {
+            //close dialog on esc
+            closeDialog(dialog);
+        } else if (event.keyCode && event.keyCode == 9 || event.key && event.key == 'Tab') {
+            //trap focus inside dialog
+            trapFocus(dialog, event);
+        }
+    };
+
+    function initClick(dialog, event) {
+        //close dialog when clicking on close button
+        if (!event.target.closest('.js-dialog__close')) return;
+        event.preventDefault();
+        closeDialog(dialog);
+    };
+
+    function trapFocus(dialog, event) {
+        if (dialog.firstFocusable == document.activeElement && event.shiftKey) {
+            //on Shift+Tab -> focus last focusable element when focus moves out of dialog
+            event.preventDefault();
+            dialog.lastFocusable.focus();
+        }
+        if (dialog.lastFocusable == document.activeElement && !event.shiftKey) {
+            //on Tab -> focus first focusable element when focus moves out of dialog
+            event.preventDefault();
+            dialog.firstFocusable.focus();
+        }
+    };
+
+    function getFocusableElements(dialog) {
+        //get all focusable elements inside the dialog
+        var allFocusable = dialog.element.querySelectorAll('[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex]:not([tabindex="-1"]), [contenteditable], audio[controls], video[controls], summary');
+        getFirstVisible(dialog, allFocusable);
+        getLastVisible(dialog, allFocusable);
+    };
+
+    function getFirstVisible(dialog, elements) {
+        //get first visible focusable element inside the dialog
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].offsetWidth || elements[i].offsetHeight || elements[i].getClientRects().length) {
+                dialog.firstFocusable = elements[i];
+                return true;
+            }
+        }
+    };
+
+    function getLastVisible(dialog, elements) {
+        //get last visible focusable element inside the dialog
+        for (var i = elements.length - 1; i >= 0; i--) {
+            if (elements[i].offsetWidth || elements[i].offsetHeight || elements[i].getClientRects().length) {
+                dialog.lastFocusable = elements[i];
+                return true;
+            }
+        }
+    };
+
+    function emitDialogEvents(dialog, eventName) {
+        var event = new CustomEvent(eventName, { detail: dialog.selectedTrigger });
+        dialog.element.dispatchEvent(event);
+    };
+
+    //initialize the Dialog objects
+    var dialogs = document.getElementsByClassName('js-dialog');
+    if (dialogs.length > 0) {
+        for (var i = 0; i < dialogs.length; i++) {
+            (function (i) { new Dialog(dialogs[i]); })(i);
+        }
+    }
+}());
+
+// File#: _1_countup
+// Usage: codyhouse.co/license
+(function () {
+    var CountUp = function (opts) {
+        this.options = extendProps(CountUp.defaults, opts);
+        this.element = this.options.element;
+        this.initialValue = parseFloat(this.options.initial);
+        this.finalValue = parseFloat(this.element.textContent);
+        this.deltaValue = parseFloat(this.options.delta);
+        this.intervalId;
+        this.animationTriggered = false;
+        this.srClass = 'cd-sr-only';
+        initCountUp(this);
+    };
+
+    CountUp.prototype.reset = function () { // reset element to its initial value
+        window.cancelAnimationFrame(this.intervalId);
+        this.element.textContent = this.initialValue;
+    };
+
+    CountUp.prototype.restart = function () { // restart element animation
+        countUpAnimate(this);
+    };
+
+    function initCountUp(countup) {
+        // reset initial value
+        countup.initialValue = getCountupStart(countup);
+
+        // reset countUp for SR
+        initCountUpSr(countup);
+
+        // listen for the element to enter the viewport -> start animation
+        var observer = new IntersectionObserver(countupObserve.bind(countup), { threshold: [0, 0.1] });
+        observer.observe(countup.element);
+
+        // listen to events
+        countup.element.addEventListener('countUpReset', function () { countup.reset(); });
+        countup.element.addEventListener('countUpRestart', function () { countup.restart(); });
+    };
+
+    function countUpShow(countup) { // reveal countup after it has been initialized
+        countup.element.closest('.countup').classList.add('countup--is-visible');
+    };
+
+    function countupObserve(entries, observer) { // observe countup position -> start animation when inside viewport
+        if (entries[0].intersectionRatio.toFixed(1) > 0 && !this.animationTriggered) {
+            countUpAnimate(this);
+        }
+    };
+
+    function countUpAnimate(countup) { // animate countup
+        countup.element.textContent = countup.initialValue;
+        countUpShow(countup);
+        window.cancelAnimationFrame(countup.intervalId);
+        var currentTime = null;
+
+        function runCountUp(timestamp) {
+            if (!currentTime) currentTime = timestamp;
+            var progress = timestamp - currentTime;
+            if (progress > countup.options.duration) progress = countup.options.duration;
+            var val = getValEaseOut(progress, countup.initialValue, countup.finalValue - countup.initialValue, countup.options.duration);
+            countup.element.textContent = getCountUpValue(val, countup);
+            if (progress < countup.options.duration) {
+                countup.intervalId = window.requestAnimationFrame(runCountUp);
+            } else {
+                countUpComplete(countup);
+            }
+        };
+
+        countup.intervalId = window.requestAnimationFrame(runCountUp);
+    };
+
+    function getCountUpValue(val, countup) { // reset new countup value to proper decimal places+separator
+        if (countup.options.decimal) { val = parseFloat(val.toFixed(countup.options.decimal)); }
+        else { val = parseInt(val); }
+        if (countup.options.separator) val = val.toLocaleString('en');
+        return val;
+    }
+
+    function countUpComplete(countup) { // emit event when animation is over
+        countup.element.dispatchEvent(new CustomEvent('countUpComplete'));
+        countup.animationTriggered = true;
+    };
+
+    function initCountUpSr(countup) { // make sure countup is accessible
+        // hide elements that will be animated to SR
+        countup.element.setAttribute('aria-hidden', 'true');
+        // create new element with visible final value - accessible to SR only
+        var srValue = document.createElement('span');
+        srValue.textContent = countup.finalValue;
+        srValue.classList.add(countup.srClass);
+        countup.element.parentNode.insertBefore(srValue, countup.element.nextSibling);
+    };
+
+    function getCountupStart(countup) {
+        return countup.deltaValue > 0 ? countup.finalValue - countup.deltaValue : countup.initialValue;
+    };
+
+    function getValEaseOut(t, b, c, d) {
+        t /= d;
+        return -c * t * (t - 2) + b;
+    };
+
+    var extendProps = function () {
+        // Variables
+        var extended = {};
+        var deep = false;
+        var i = 0;
+        var length = arguments.length;
+
+        // Check if a deep merge
+        if (Object.prototype.toString.call(arguments[0]) === '[object Boolean]') {
+            deep = arguments[0];
+            i++;
+        }
+
+        // Merge the object into the extended object
+        var merge = function (obj) {
+            for (var prop in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+                    // If deep merge and property is an object, merge properties
+                    if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+                        extended[prop] = extend(true, extended[prop], obj[prop]);
+                    } else {
+                        extended[prop] = obj[prop];
+                    }
+                }
+            }
+        };
+
+        // Loop through each object and conduct a merge
+        for (; i < length; i++) {
+            var obj = arguments[i];
+            merge(obj);
+        }
+
+        return extended;
+    };
+
+    CountUp.defaults = {
+        element: '',
+        separator: false,
+        duration: 3000,
+        decimal: false,
+        initial: 0,
+        delta: 0
+    };
+
+    window.CountUp = CountUp;
+
+    //initialize the CountUp objects
+    var countUp = document.getElementsByClassName('js-countup');
+    if (countUp.length > 0) {
+        for (var i = 0; i < countUp.length; i++) {
+            (function (i) {
+                var separator = (countUp[i].getAttribute('data-countup-sep')) ? countUp[i].getAttribute('data-countup-sep') : false,
+                    duration = (countUp[i].getAttribute('data-countup-duration')) ? countUp[i].getAttribute('data-countup-duration') : CountUp.defaults.duration,
+                    decimal = (countUp[i].getAttribute('data-countup-decimal')) ? countUp[i].getAttribute('data-countup-decimal') : false,
+                    initial = (countUp[i].getAttribute('data-countup-start')) ? countUp[i].getAttribute('data-countup-start') : 0,
+                    delta = (countUp[i].getAttribute('data-countup-delta')) ? countUp[i].getAttribute('data-countup-delta') : 0;
+                new CountUp({ element: countUp[i], separator: separator, duration: duration, decimal: decimal, initial: initial, delta: delta });
+            })(i);
+        }
+    }
+}());
